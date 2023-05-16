@@ -6,12 +6,13 @@ export default async function Pokemon({ params }) {
   const api = `https://pokeapi.co/api/v2/pokemon`;
   const res = await fetch(`${api}/${params.id}`);
   const pokemon = await res.json();
+  const pokemonImage = await pokemon.sprites.other["official-artwork"].front_default;
 
   return (
     <div className={styles.pokemon_container}>
       <h1 className={styles.pokemon_title}>{pokemon.name}</h1>
       <Image
-        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}
+        src={pokemonImage}
         width="200"
         height="200"
         alt={pokemon.name}
