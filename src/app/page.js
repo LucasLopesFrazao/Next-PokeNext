@@ -4,8 +4,7 @@ import Image from "next/image";
 
 import Card from "@/components/Card";
 
-
-export async function getPokemons() {
+export default async function Home() {
   const maxPokemons = 151;
   const api = `https://pokeapi.co/api/v2/pokemon/`;
 
@@ -18,11 +17,7 @@ export async function getPokemons() {
     item.id = index + 1;
   });
 
-  return data.results;
-}
-
-export default async function Home() {
-  const pokemons = await getPokemons();
+  const pokemons = data.results;
   return (
     <>
       <div className={styles.title_container}>
