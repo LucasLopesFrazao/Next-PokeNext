@@ -1,5 +1,9 @@
 import styles from "./page.module.css";
+
 import Image from "next/image";
+
+import Card from "@/components/Card";
+
 
 export async function getPokemons() {
   const maxPokemons = 151;
@@ -34,9 +38,7 @@ export default async function Home() {
       </div>
       <div className={styles.pokemon_container}>
         {pokemons.map((pokemon) => (
-          <p key={pokemon.id}>
-            {pokemon.name} - {pokemon.id}
-          </p>
+          <Card key={pokemon.id} pokemon={pokemon} />
         ))}
       </div>
     </>
